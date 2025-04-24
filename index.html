@@ -6,57 +6,109 @@
   <title>MicroMining</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
+      font-family: 'Orbitron', sans-serif;
+      background-color: #0d0d0d;
+      color: #00ffe7;
       display: flex;
     }
+
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+
     .ads {
-      width: 100px;
-      background-color: #f4f4f4;
+      width: 120px;
+      background: linear-gradient(180deg, #1a1a1a, #111);
       height: 100vh;
       padding: 10px;
       box-sizing: border-box;
-      font-size: 12px;
+      border-right: 2px solid #00ffe7;
+      font-size: 10px;
+      color: #cccccc;
     }
+
+    .ads div {
+      margin-bottom: 20px;
+      padding: 10px;
+      background: #222;
+      border: 1px solid #00ffe7;
+      border-radius: 6px;
+    }
+
     .container {
       flex-grow: 1;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    .miner-box, .withdraw {
+      margin-top: 40px;
       padding: 20px;
+      width: 100%;
+      max-width: 600px;
+      background: #1a1a1a;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #00ffe7;
     }
-    .miner-box {
-      margin-top: 20px;
-    }
+
     button {
+      background-color: #00ffe7;
+      color: #000;
+      border: none;
+      padding: 12px 20px;
+      margin-top: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #00cccc;
+    }
+
+    input[type="text"] {
+      width: 100%;
       padding: 10px;
       margin-top: 10px;
+      border: 2px solid #00ffe7;
+      background: #0d0d0d;
+      color: #00ffe7;
+      border-radius: 5px;
     }
   </style>
 </head>
 <body>
 
   <div class="ads">
-    <div>Ad 1</div>
-    <hr />
-    <div>Ad 2</div>
+    <div>Ad 1 - Galaxy VPN</div>
+    <div>Ad 2 - FutureNet Cloud</div>
   </div>
 
   <div class="container">
     <h1>MicroMining</h1>
-    <p>Welcome! Start mining Bitcoin by collecting miners and earning satoshis.</p>
+    <p>Simulate Bitcoin mining in real time and boost your earnings.</p>
 
     <div class="miner-box">
       <p><strong>Miners:</strong> <span id="miners">1</span></p>
       <p><strong>Hashrate:</strong> <span id="hashrate">10 H/s</span></p>
       <p><strong>Balance:</strong> <span id="balance">0</span> sats</p>
-      <button onclick="mine()">Mine</button>
-      <button onclick="watchAds()">Watch 20 Ads for 2x Boost</button>
+      <button onclick="mine()">⛏️ Mine</button>
+      <button onclick="watchAds()">🎥 Watch 20 Ads for 2x Boost</button>
     </div>
 
     <div class="withdraw">
-      <h3>Withdraw</h3>
-      <p>Minimum 150 sats</p>
-      <input type="text" placeholder="Enter Lightning Address" id="withdrawAddress"/>
-      <button onclick="withdraw()">Withdraw</button>
+      <h3>⚡ Withdraw</h3>
+      <p>Minimum 150 sats. Instant payout via Lightning Network.</p>
+      <input type="text" placeholder="Enter your Lightning address" id="withdrawAddress"/>
+      <button onclick="withdraw()">💸 Withdraw</button>
     </div>
   </div>
 
@@ -80,20 +132,20 @@
     function watchAds() {
       if (miners <= 10) {
         boost = 2;
-        alert("Boost activated! You're earning 2x for your next miners.");
+        alert("🚀 Boost activated! You're now mining at 2x speed.");
       } else {
-        alert("Only works for up to 10 miners.");
+        alert("❌ Boost only works for 10 or fewer miners.");
       }
     }
 
     function withdraw() {
       if (balance >= 150) {
         let addr = document.getElementById("withdrawAddress").value;
-        alert(`Withdraw request sent to: ${addr}`);
+        alert(`✅ Withdrawal requested to ${addr}`);
         balance = 0;
         updateDisplay();
       } else {
-        alert("You need at least 150 sats to withdraw.");
+        alert("⚠️ You need at least 150 sats to withdraw.");
       }
     }
 
