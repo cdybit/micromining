@@ -5,238 +5,135 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MicroMining</title>
   <style>
-body {
-  background-color: #0b0b0b;
-  color: #fff;
-  font-family: 'Arial', sans-serif;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  overflow: hidden;
-}
-
-.container {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  width: 100%;
-  max-width: 1200px; /* Limit the overall width */
-}
-
-.ads-left,
-.ads-right {
-  width: 160px;
-  height: 300px;
-  padding: 10px;
-  flex-shrink: 0; /* Prevent ads from shrinking */
-}
-
-.main-content {
-  flex-grow: 1;
-  margin: 0 20px;
-  text-align: center;
-  padding: 20px;
-  background-color: #1d1f21;
-  border-radius: 10px;
-  box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
-}
-
-.mine-button {
-  background-color: #00b5b8;
-  border: none;
-  padding: 15px 30px;
-  font-size: 18px;
-  color: #fff;
-  cursor: pointer;
-  border-radius: 5px;
-  margin-top: 20px;
-}
-
-.mine-button:hover {
-  background-color: #01d1d3;
-}
-
-h1 {
-  color: #00b5b8;
-}
-
-p {
-  font-size: 18px;
-  color: #fff;
-}
-
-footer {
-  position: fixed;
-  bottom: 10px;
-  left: 10px;
-  color: #fff;
-}
-
-/* Media query for smaller screens (mobile responsiveness) */
-@media (max-width: 768px) {
-  .container {
-    flex-direction: column; /* Stack the elements vertically on smaller screens */
-    align-items: center;
-  }
-
-  .ads-left, .ads-right {
-    width: 100%; /* Make ads take up full width on mobile */
-    height: auto; /* Let the height adjust automatically */
-    margin: 10px 0;
-  }
-
-  .main-content {
-    width: 100%; /* Ensure the main content takes full width */
-    margin: 20px 0;
-  }
-}
-
-@media (max-width: 480px) {
-  .mine-button {
-    width: 80%; /* Make the button bigger on small screens */
-    padding: 10px;
-  }
-
-  h1 {
-    font-size: 24px; /* Adjust header size for mobile */
-  }
-
-  p {
-    font-size: 16px; /* Adjust text size for mobile */
-  }
-}
-
-  <style>
     body {
-      font-family: Arial, sans-serif;
-      background-color: #1e1e1e; /* Black background */
-      color: white;
-      text-align: center;
-      position: relative;
       margin: 0;
-      padding: 0;
+      font-family: "Orbitron", sans-serif;
+      background-color: #0a0a0a;
+      color: #00f9ff;
+      overflow-x: hidden;
     }
-
-    h1 {
-      color: #00b4cc; /* Teal color */
+    header {
+      text-align: center;
+      padding: 20px;
+      font-size: 1.5rem;
     }
-
-    .left-ad, .right-ad {
-      position: fixed;
-      top: 100px;
+    .container {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      margin: 0 10px;
+    }
+    .ad {
       width: 160px;
       height: 300px;
+      margin: 10px;
     }
-
-    .left-ad {
-      left: 0;
+    .main {
+      max-width: 600px;
+      text-align: center;
+      padding: 20px;
+      flex-grow: 1;
     }
-
-    .right-ad {
-      right: 0;
-    }
-
-    .miner-dashboard {
-      background-color: #222; /* Dark background for dashboard */
-      padding: 30px;
-      margin-top: 60px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
-      display: inline-block;
-      max-width: 400px;
-      width: 100%;
-    }
-
-    .hash-rate {
-      font-size: 28px;
-      font-weight: bold;
-      color: #00b4cc; /* Teal color */
-    }
-
-    .mine-button {
-      background-color: #00b4cc; /* Teal background for the button */
-      color: white;
-      border: none;
+    button {
       padding: 15px 30px;
-      font-size: 18px;
+      background-color: #004d4d;
+      border: none;
+      color: #00f9ff;
+      font-size: 1.2rem;
       cursor: pointer;
-      border-radius: 8px;
-      margin-top: 20px;
-      width: 100%;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-      transition: background-color 0.3s ease;
+      border-radius: 10px;
+      margin-top: 15px;
     }
-
-    .mine-button:hover {
-      background-color: #008a8a; /* Darker teal on hover */
+    #bitcoin {
+      font-size: 2rem;
+      margin-top: 10px;
     }
-
-    .boost {
-      font-size: 18px;
-      color: #ffcc00; /* Gold color for the boost message */
-      margin-top: 20px;
-    }
-
     footer {
-      position: absolute;
-      bottom: 10px;
-      left: 10px;
-      color: #888;
+      text-align: left;
+      font-size: 0.8rem;
+      color: #666;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      padding: 10px;
+    }
+    .bottom-ad {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
     }
 
-    /* Responsiveness */
-    @media (max-width: 768px) {
-      .miner-dashboard {
-        padding: 20px;
-        max-width: 90%;
+    @media screen and (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        align-items: center;
+      }
+      .ad {
+        width: 320px;
+        height: 50px;
       }
     }
   </style>
 </head>
 <body>
-  <h1>Welcome to MicroMining</h1>
-  <p>Simulate Bitcoin mining and earn satoshis!</p>
+  <header>Welcome to MicroMining</header>
+  <div class="container">
+    <div class="ad">
+      <script type="text/javascript">
+        atOptions = {
+          'key': 'faf5c520c08df32a0ee4a1017f25c8c3',
+          'format': 'iframe',
+          'height': 300,
+          'width': 160,
+          'params': {}
+        };
+      </script>
+      <script type="text/javascript" src="//www.highperformanceformat.com/faf5c520c08df32a0ee4a1017f25c8c3/invoke.js"></script>    </div>
 
-  <!-- Left Ad Banner -->
-  <div class="left-ad">
-    <script type="text/javascript">
-      atOptions = {
-        'key' : 'faf5c520c08df32a0ee4a1017f25c8c3',
-        'format' : 'iframe',
-        'height' : 300,
-        'width' : 160,
-        'params' : {}
-      };
-    </script>
-    <script type="text/javascript" src="//www.highperformanceformat.com/faf5c520c08df32a0ee4a1017f25c8c3/invoke.js"></script>
+    <div class="main">
+      <h2>Mining Speed: 4.5 GH/s</h2>
+      <button onclick="mine()">Start Mining</button>
+      <div id="bitcoin">0.00000000 BTC</div>
+
+      <div class="bottom-ad">
+        <script type="text/javascript">
+          atOptions = {
+            'key': '<script async="async" data-cfasync="false" src="//pl26467503.profitableratecpm.com/55364a326bd45392f5c0f504da6c4dad/invoke.js"></script>
+<div id="container-55364a326bd45392f5c0f504da6c4dad"></div>',
+            'format': 'iframe',
+            'height': 60,
+            'width': 468,
+            'params': {}
+          };
+        </script>
+        <script type="text/javascript" src="//www.highperformanceformat.com/<script async="async" data-cfasync="false" src="//pl26467503.profitableratecpm.com/55364a326bd45392f5c0f504da6c4dad/invoke.js"></script>
+<div id="container-55364a326bd45392f5c0f504da6c4dad"></div>/invoke.js"></script>
+      </div>
+    </div>
+
+    <div class="ad">
+      <script type="text/javascript">
+        atOptions = {
+          'key': 'faf5c520c08df32a0ee4a1017f25c8c3',
+          'format': 'iframe',
+          'height': 300,
+          'width': 160,
+          'params': {}
+        };
+      </script>
+      <script type="text/javascript" src="//www.highperformanceformat.com/faf5c520c08df32a0ee4a1017f25c8c3/invoke.js"></script>
+    </div>
   </div>
 
-  <!-- Right Ad Banner -->
-  <div class="right-ad">
-    <script type="text/javascript">
-      atOptions = {
-        'key' : 'faf5c520c08df32a0ee4a1017f25c8c3',
-        'format' : 'iframe',
-        'height' : 300,
-        'width' : 160,
-        'params' : {}
-      };
-    </script>
-    <script type="text/javascript" src="//www.highperformanceformat.com/faf5c520c08df32a0ee4a1017f25c8c3/invoke.js"></script>
-  </div>
+  <footer>Made By CNXD-CDY-CXD-CDX</footer>
 
-  <!-- Miner Dashboard -->
-  <div class="miner-dashboard">
-    <h2>Mine Satoshis</h2>
-    <p>Your current hash rate: <span class="hash-rate">4.5 GH/s</span></p>
-    <button class="mine-button">Mine 4.5 GH/s</button>
-  </div>
-
-  <footer>
-    <p>Made By CNXD-CDY-CXD-CDX</p>
-  </footer>
+  <script>
+    let bitcoin = 0;
+    function mine() {
+      bitcoin += 0.00000001;
+      document.getElementById('bitcoin').innerText = bitcoin.toFixed(8) + " BTC";
+    }
+  </script>
 </body>
 </html>
