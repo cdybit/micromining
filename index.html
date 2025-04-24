@@ -2,94 +2,93 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MicroMining</title>
   <style>
     body {
-      font-family: 'Orbitron', sans-serif;
-      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
-      color: #00ffcc;
+      font-family: Arial, sans-serif;
+      background-color: #181818;
+      color: white;
       text-align: center;
-      padding: 2rem;
+      position: relative;
     }
-    .stats {
-      margin: 2rem 0;
+    .left-ad, .right-ad {
+      position: fixed;
+      top: 100px;
+      width: 160px;
+      height: 300px;
     }
-    .stats div {
-      margin: 0.5rem 0;
+    .left-ad {
+      left: 0;
     }
-    button {
-      background-color: #00ffcc;
-      color: #000;
-      border: none;
-      padding: 1rem 2rem;
-      margin: 1rem;
-      font-size: 1rem;
-      cursor: pointer;
-      border-radius: 5px;
+    .right-ad {
+      right: 0;
     }
-    input {
-      padding: 0.5rem;
-      margin-top: 1rem;
-      width: 80%;
-      max-width: 300px;
+    .miner-dashboard {
+      margin-top: 60px;
+      background-color: #222;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    }
+    .hash-rate {
+      font-size: 24px;
+      margin-top: 10px;
+    }
+    .boost {
+      font-size: 18px;
+      color: gold;
+      margin-top: 20px;
+    }
+    footer {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      color: #888;
     }
   </style>
 </head>
 <body>
-  <h1>MicroMining</h1>
-  <div class="stats">
-    <div>Hashrate: <span id="hashrate">0.1</span> TH/s</div>
-    <div>Balance: <span id="balance">0.00000000</span> BTC</div>
+  <h1>Welcome to MicroMining</h1>
+  <p>Simulate Bitcoin mining and earn satoshis!</p>
+
+  <!-- Left Ad Banner -->
+  <div class="left-ad">
+    <script type="text/javascript">
+      atOptions = {
+        'key' : 'faf5c520c08df32a0ee4a1017f25c8c3',
+        'format' : 'iframe',
+        'height' : 300,
+        'width' : 160,
+        'params' : {}
+      };
+    </script>
+    <script type="text/javascript" src="//www.highperformanceformat.com/faf5c520c08df32a0ee4a1017f25c8c3/invoke.js"></script>
   </div>
-  <button onclick="watchAd()">Watch Ad (+4.5 GH/s)</button>
-  <br/>
-  <input type="text" id="withdrawAddress" placeholder="Enter BTC address"/>
-  <br/>
-  <button onclick="withdraw()">Withdraw</button>
 
-  <script>
-    let baseHashrate = 0.1; // in TH/s
-    let adBoost = 0; // in TH/s
-    let balance = 0; // in BTC
-    const networkHashrate = 500000; // in TH/s
-    const dailyBlockReward = 450; // BTC per day
+  <!-- Right Ad Banner -->
+  <div class="right-ad">
+    <script type="text/javascript">
+      atOptions = {
+        'key' : 'faf5c520c08df32a0ee4a1017f25c8c3',
+        'format' : 'iframe',
+        'height' : 300,
+        'width' : 160,
+        'params' : {}
+      };
+    </script>
+    <script type="text/javascript" src="//www.highperformanceformat.com/faf5c520c08df32a0ee4a1017f25c8c3/invoke.js"></script>
+  </div>
 
-    function updateDisplay() {
-      document.getElementById("hashrate").textContent = (baseHashrate + adBoost).toFixed(4);
-      document.getElementById("balance").textContent = balance.toFixed(8);
-    }
+  <!-- Miner Dashboard -->
+  <div class="miner-dashboard">
+    <h2>Mine Satoshis</h2>
+    <p>Your current hash rate: <span class="hash-rate">4.5 GH/s</span></p>
+    <p class="boost">Boost: Watch 20 ads to double your mining power!</p>
+  </div>
 
-    function calculateEarnings() {
-      const userHashrate = baseHashrate + adBoost;
-      const dailyEarnings = (userHashrate / networkHashrate) * dailyBlockReward;
-      balance += dailyEarnings / 86400; // earnings per second
-      updateDisplay();
-    }
-
-    function watchAd() {
-      adBoost += 0.0045; // 4.5 GH/s = 0.0045 TH/s
-      alert("You've gained 4.5 GH/s for 24 hours!");
-      updateDisplay();
-      setTimeout(() => {
-        adBoost -= 0.0045;
-        updateDisplay();
-      }, 24 * 60 * 60 * 1000); // 24 hours in milliseconds
-    }
-
-    function withdraw() {
-      const address = document.getElementById("withdrawAddress").value;
-      if (balance >= 0.0000015) { // minimum withdrawal threshold
-        alert(`Withdrawal of ${balance.toFixed(8)} BTC to ${address} initiated.`);
-        balance = 0;
-        updateDisplay();
-      } else {
-        alert("Minimum withdrawal amount is 0.0000015 BTC.");
-      }
-    }
-
-    updateDisplay();
-    setInterval(calculateEarnings, 1000); // update earnings every second
-  </script>
+  <footer>
+    <p>Made By CNXD-CDY-CXD-CDX</p>
+  </footer>
 </body>
 </html>
