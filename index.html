@@ -5,27 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>MicroMining</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
-
     body {
       font-family: 'Orbitron', sans-serif;
       background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
       color: #00ffcc;
       text-align: center;
       padding: 2rem;
-      margin: 0;
-      position: relative;
-      height: 100vh;
     }
-
     .stats {
       margin: 2rem 0;
     }
-
     .stats div {
       margin: 0.5rem 0;
     }
-
     button {
       background-color: #00ffcc;
       color: #000;
@@ -36,6 +28,68 @@
       cursor: pointer;
       border-radius: 5px;
     }
-
     input {
-      padding
+      padding: 0.5rem;
+      margin-top: 1rem;
+      width: 80%;
+      max-width: 300px;
+    }
+  </style>
+</head>
+<body>
+  <h1>MicroMining</h1>
+  <div class="stats">
+    <div>Hashrate: <span id="hashrate">0.1</span> TH/s</div>
+    <div>Balance: <span id="balance">0.00000000</span> BTC</div>
+  </div>
+  <button onclick="watchAd()">Watch Ad (+4.5 GH/s)</button>
+  <br/>
+  <input type="text" id="withdrawAddress" placeholder="Enter BTC address"/>
+  <br/>
+  <button onclick="withdraw()">Withdraw</button>
+
+  <script>
+    let baseHashrate = 0.1; // in TH/s
+    let adBoost = 0; // in TH/s
+    let balance = 0; // in BTC
+    const networkHashrate = 500000; // in TH/s
+    const dailyBlockReward = 450; // BTC per day
+
+    function updateDisplay() {
+      document.getElementById("hashrate").textContent = (baseHashrate + adBoost).toFixed(4);
+      document.getElementById("balance").textContent = balance.toFixed(8);
+    }
+
+    function calculateEarnings() {
+      const userHashrate = baseHashrate + adBoost;
+      const dailyEarnings = (userHashrate / networkHashrate) * dailyBlockReward;
+      balance += dailyEarnings / 86400; // earnings per second
+      updateDisplay();
+    }
+
+    function watchAd() {
+      adBoost += 0.0045; // 4.5 GH/s = 0.0045 TH/s
+      alert("You've gained 4.5 GH/s for 24 hours!");
+      updateDisplay();
+      setTimeout(() => {
+        adBoost -= 0.0045;
+        updateDisplay();
+      }, 24 * 60 * 60 * 1000); // 24 hours in milliseconds
+    }
+
+    function withdraw() {
+      const address = document.getElementById("withdrawAddress").value;
+      if (balance >= 0.0000015) { // minimum withdrawal threshold
+        alert(`Withdrawal of ${balance.toFixed(8)} BTC to ${address} initiated.`);
+        balance = 0;
+        updateDisplay();
+      } else {
+        alert("Minimum withdrawal amount is 0.0000015 BTC.");
+      }
+    }
+
+    updateDisplay();
+    setInterval(calculateEarnings, 1000); // update earnings every second
+  </script>
+</body>
+</html>
