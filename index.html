@@ -5,34 +5,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>MicroMining</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      padding: 0;
       font-family: 'Orbitron', sans-serif;
       background-color: #0d0d0d;
       color: #00ffe7;
       display: flex;
     }
 
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
-
     .ads {
       width: 120px;
-      background: linear-gradient(180deg, #1a1a1a, #111);
+      background: #111;
       height: 100vh;
       padding: 10px;
-      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
       border-right: 2px solid #00ffe7;
       font-size: 10px;
-      color: #cccccc;
+    }
+
+    .ads.right {
+      border-right: none;
+      border-left: 2px solid #00ffe7;
     }
 
     .ads div {
-      margin-bottom: 20px;
       padding: 10px;
       background: #222;
       border: 1px solid #00ffe7;
       border-radius: 6px;
+      text-align: center;
     }
 
     .container {
@@ -49,7 +57,7 @@
     }
 
     .miner-box, .withdraw {
-      margin-top: 40px;
+      margin-top: 30px;
       padding: 20px;
       width: 100%;
       max-width: 600px;
@@ -88,28 +96,33 @@
 <body>
 
   <div class="ads">
-    <div>Ad 1 - Galaxy VPN</div>
-    <div>Ad 2 - FutureNet Cloud</div>
+    <div>Ad 1 - RocketVPN</div>
+    <div>Ad 2 - NeoExchange</div>
   </div>
 
   <div class="container">
     <h1>MicroMining</h1>
-    <p>Simulate Bitcoin mining in real time and boost your earnings.</p>
+    <p>Simulate Bitcoin mining and earn real satoshis.</p>
 
     <div class="miner-box">
       <p><strong>Miners:</strong> <span id="miners">1</span></p>
       <p><strong>Hashrate:</strong> <span id="hashrate">10 H/s</span></p>
-      <p><strong>Balance:</strong> <span id="balance">0</span> sats</p>
+      <p><strong>Balance:</strong> <span id="balance">0.00000000</span> sats</p>
       <button onclick="mine()">⛏️ Mine</button>
       <button onclick="watchAds()">🎥 Watch 20 Ads for 2x Boost</button>
     </div>
 
     <div class="withdraw">
       <h3>⚡ Withdraw</h3>
-      <p>Minimum 150 sats. Instant payout via Lightning Network.</p>
+      <p>Minimum 150 sats. Instant payout via Lightning.</p>
       <input type="text" placeholder="Enter your Lightning address" id="withdrawAddress"/>
       <button onclick="withdraw()">💸 Withdraw</button>
     </div>
+  </div>
+
+  <div class="ads right">
+    <div>Ad 3 - MetaWallet</div>
+    <div>Ad 4 - Saturn Host</div>
   </div>
 
   <script>
@@ -121,11 +134,11 @@
     function updateDisplay() {
       document.getElementById("miners").textContent = miners;
       document.getElementById("hashrate").textContent = `${hashrate} H/s`;
-      document.getElementById("balance").textContent = balance;
+      document.getElementById("balance").textContent = balance.toFixed(8);
     }
 
     function mine() {
-      balance += hashrate * boost;
+      balance += hashrate * boost * 0.00000001;
       updateDisplay();
     }
 
@@ -139,13 +152,13 @@
     }
 
     function withdraw() {
-      if (balance >= 150) {
-        let addr = document.getElementById("withdrawAddress").value;
+      if (balance >= 0.00000150) {
+        const addr = document.getElementById("withdrawAddress").value;
         alert(`✅ Withdrawal requested to ${addr}`);
         balance = 0;
         updateDisplay();
       } else {
-        alert("⚠️ You need at least 150 sats to withdraw.");
+        alert("⚠️ You need at least 0.00000150 sats to withdraw.");
       }
     }
 
