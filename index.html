@@ -7,132 +7,124 @@
   <style>
     body {
       margin: 0;
-      font-family: "Orbitron", sans-serif;
+      font-family: 'Segoe UI', sans-serif;
       background-color: #0a0a0a;
-      color: #00f9ff;
-      overflow-x: hidden;
-    }
-    header {
+      color: #00f2ff;
       text-align: center;
-      padding: 20px;
-      font-size: 1.5rem;
     }
+
     .container {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      margin: 0 10px;
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
     }
-    .ad {
+
+    h1 {
+      color: #00f2ff;
+    }
+
+    .mining-display {
+      font-size: 2rem;
+      margin: 20px 0;
+    }
+
+    button {
+      background-color: #00f2ff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1rem;
+      cursor: pointer;
+      color: #000;
+      border-radius: 5px;
+    }
+
+    .ads-left,
+    .ads-right {
+      position: fixed;
+      top: 80px;
       width: 160px;
       height: 300px;
-      margin: 10px;
+      z-index: 10;
     }
-    .main {
-      max-width: 600px;
-      text-align: center;
-      padding: 20px;
-      flex-grow: 1;
-    }
-    button {
-      padding: 15px 30px;
-      background-color: #004d4d;
-      border: none;
-      color: #00f9ff;
-      font-size: 1.2rem;
-      cursor: pointer;
-      border-radius: 10px;
-      margin-top: 15px;
-    }
-    #bitcoin {
-      font-size: 2rem;
-      margin-top: 10px;
-    }
-    footer {
-      text-align: left;
-      font-size: 0.8rem;
-      color: #666;
-      position: fixed;
-      bottom: 0;
+
+    .ads-left {
       left: 0;
-      padding: 10px;
     }
+
+    .ads-right {
+      right: 0;
+    }
+
     .bottom-ad {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      margin-top: 20px;
+      margin-top: 40px;
+    }
+
+    footer {
+      color: #777;
+      margin-top: 40px;
+      font-size: 0.8rem;
     }
 
     @media screen and (max-width: 768px) {
-      .container {
-        flex-direction: column;
-        align-items: center;
-      }
-      .ad {
-        width: 320px;
-        height: 50px;
+      .ads-left,
+      .ads-right {
+        display: none;
       }
     }
   </style>
 </head>
 <body>
-  <header>Welcome to MicroMining</header>
-  <div class="container">
-    <div class="ad">
-      <script type="text/javascript">
-        atOptions = {
-          'key': 'faf5c520c08df32a0ee4a1017f25c8c3',
-          'format': 'iframe',
-          'height': 300,
-          'width': 160,
-          'params': {}
-        };
-      </script>
-      <script type="text/javascript" src="//www.highperformanceformat.com/faf5c520c08df32a0ee4a1017f25c8c3/invoke.js"></script>    </div>
-
-    <div class="main">
-      <h2>Mining Speed: 4.5 GH/s</h2>
-      <button onclick="mine()">Start Mining</button>
-      <div id="bitcoin">0.00000000 BTC</div>
-
-      <div class="bottom-ad">
-        <script type="text/javascript">
-          atOptions = {
-            'key': '<script async="async" data-cfasync="false" src="//pl26467503.profitableratecpm.com/55364a326bd45392f5c0f504da6c4dad/invoke.js"></script>
-<div id="container-55364a326bd45392f5c0f504da6c4dad"></div>',
-            'format': 'iframe',
-            'height': 60,
-            'width': 468,
-            'params': {}
-          };
-        </script>
-        <script type="text/javascript" src="//www.highperformanceformat.com/<script async="async" data-cfasync="false" src="//pl26467503.profitableratecpm.com/55364a326bd45392f5c0f504da6c4dad/invoke.js"></script>
-<div id="container-55364a326bd45392f5c0f504da6c4dad"></div>/invoke.js"></script>
-      </div>
-    </div>
-
-    <div class="ad">
-      <script type="text/javascript">
-        atOptions = {
-          'key': 'faf5c520c08df32a0ee4a1017f25c8c3',
-          'format': 'iframe',
-          'height': 300,
-          'width': 160,
-          'params': {}
-        };
-      </script>
-      <script type="text/javascript" src="//www.highperformanceformat.com/faf5c520c08df32a0ee4a1017f25c8c3/invoke.js"></script>
-    </div>
+  <div class="ads-left">
+    <!-- Adsterra Ad 1 -->
+    <script type="text/javascript">
+      atOptions = {
+        'key': 'faf5c520c08df32a0ee4a1017f25c8c3',
+        'format': 'iframe',
+        'height': 300,
+        'width': 160,
+        'params': {}
+      };
+    </script>
+    <script type="text/javascript" src="//www.highperformanceformat.com/faf5c520c08df32a0ee4a1017f25c8c3/invoke.js"></script>
   </div>
 
-  <footer>Made By CNXD-CDY-CXD-CDX</footer>
+  <div class="ads-right">
+    <!-- Additional Adsterra Ad 2 -->
+    <script type="text/javascript">
+      atOptions = {
+        'key': 'YOUR_SECOND_AD_KEY',
+        'format': 'iframe',
+        'height': 300,
+        'width': 160,
+        'params': {}
+      };
+    </script>
+    <script type="text/javascript" src="//www.highperformanceformat.com/YOUR_SECOND_AD_KEY/invoke.js"></script>
+  </div>
+
+  <div class="container">
+    <h1>MicroMining</h1>
+    <p>Simulated Bitcoin Mining at 4.5 GH/s</p>
+    <div class="mining-display" id="btcDisplay">0.00000000 BTC</div>
+    <button onclick="startMining()">Mine @ 4.5 GH/s</button>
+
+    <div class="bottom-ad">
+      <!-- Add another ad service here, e.g., PopAds, Adcash, etc. -->
+    </div>
+    <footer>
+      Made By CNXD-CDY-CXD-CDX
+    </footer>
+  </div>
 
   <script>
-    let bitcoin = 0;
-    function mine() {
-      bitcoin += 0.00000001;
-      document.getElementById('bitcoin').innerText = bitcoin.toFixed(8) + " BTC";
+    let btcMined = 0;
+    const ratePerSecond = 0.000000015 / 86400; // Based on 4.5 GH/s earning ~1.5 sats/day
+
+    function startMining() {
+      setInterval(() => {
+        btcMined += ratePerSecond;
+        document.getElementById('btcDisplay').innerText = btcMined.toFixed(8) + ' BTC';
+      }, 1000);
     }
   </script>
 </body>
